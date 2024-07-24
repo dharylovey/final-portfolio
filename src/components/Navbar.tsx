@@ -20,7 +20,7 @@ export default function Navbar() {
           <DockIcon key={item.href}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link href={item.href}>
+                <Link href={item.href} target="_blank">
                   <item.icon className="size-4 h-6 w-6" color={item.color} />
                 </Link>
               </TooltipTrigger>
