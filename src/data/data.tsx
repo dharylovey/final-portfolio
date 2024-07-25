@@ -29,20 +29,7 @@ export const DATA = {
       color: '#3b5998',
     },
   ],
-  // skills: [
-  //   'JavaScript',
-  //   'TypeScript',
-  //   'React',
-  //   'Next.js',
-  //   'Node.js',
-  //   'Express',
-  //   'MongoDB',
-  //   'TailwindCSS',
-  //   'Bootstrap',
-  //   'HTML',
-  //   'CSS',
-  //   'Git',
-  // ],
+
   skills: [
     {
       name: 'JavaScript',
@@ -157,7 +144,7 @@ export const DATA = {
       start: 'May 2024',
       end: 'Present',
       description:
-        'Managing records, projects and calendars to make sure everything functions smoothly',
+        'I am responsible for managing correspondence, scheduling appointments, maintaining files, and assisting with legal document preparation.',
       logo: '/csu.png',
       href: '#',
     },

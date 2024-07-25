@@ -6,7 +6,7 @@ import { MyCard } from '@/components/my-card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { DATA } from '@/data/data';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { IconCloudSkill } from '@/components/icon-cloud';
 
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
             <div className="flex flex-1 flex-col space-y-4">
               <BlurFade>
                 <TypingAnimation
-                  text={`Hi, I'm ${DATA.name.split(' ')[0]} `}
+                  text={`Hi, I'm ${DATA.name.split(' ')[0]} ✨`}
                   className="text-start text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
                 />
               </BlurFade>
@@ -101,6 +101,7 @@ export default function Home() {
               </BlurFade>
             ))}
           </div>
+          <IconCloudSkill />
         </div>
       </section>
     </main>
