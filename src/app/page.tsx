@@ -5,10 +5,12 @@ import { Particle } from '@/components/particles';
 import { MyCard } from '@/components/my-card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { DATA } from '@/data/data';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
   return (
-    <main className="mx-auto flex flex-col justify-center space-y-8 pt-36">
+    <main className="mx-auto flex flex-col justify-center space-y-8 py-36">
       <Particle />
       <section id="hero">
         <div className="mx-auto w-full max-w-screen-lg space-y-8">
@@ -26,7 +28,7 @@ export default function Home() {
                 text={DATA.description}
               />
             </div>
-            <BlurFade delay={0.4}>
+            <BlurFade delay={0.5}>
               <Avatar className="size-28 border md:size-48">
                 <AvatarImage alt={DATA.name} src={DATA.avatar} />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
@@ -36,10 +38,10 @@ export default function Home() {
         </div>
       </section>
       <section id="profile">
-        <BlurFade delay={0.5 * 3}>
+        <BlurFade delay={0.6}>
           <h2 className="text-xl font-bold">Profile</h2>
         </BlurFade>
-        <BlurFade delay={0.5 * 4}>
+        <BlurFade delay={0.7}>
           <p className="max-w-full text-pretty font-sans text-sm text-muted-foreground md:text-lg">
             {DATA.profile}
           </p>
@@ -47,11 +49,11 @@ export default function Home() {
       </section>
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={0.5 * 7}>
+          <BlurFade delay={0.8}>
             <h2 className="text-xl font-bold">Education</h2>
           </BlurFade>
           {DATA.education.map((education, id) => (
-            <BlurFade key={education.school} delay={0.5 * 8 + id * 0.05}>
+            <BlurFade key={education.school} delay={0.9}>
               <MyCard
                 key={education.school}
                 href={education.href}
@@ -63,6 +65,42 @@ export default function Home() {
               />
             </BlurFade>
           ))}
+        </div>
+      </section>
+      <section id="work">
+        <div className="flex min-h-0 flex-col gap-y-3">
+          <BlurFade delay={1}>
+            <h2 className="text-xl font-bold">Work Experience</h2>
+          </BlurFade>
+          {DATA.works.map((work, id) => (
+            <BlurFade key={work.company} delay={1}>
+              <MyCard
+                key={work.company}
+                logoUrl={work.logo}
+                altText={work.company}
+                title={work.company}
+                subtitle={work.title}
+                href={work.href}
+                // badges={work.badges}
+                period={`${work.start} - ${work.end ?? 'Present'}`}
+                description={work.description}
+              />
+            </BlurFade>
+          ))}
+        </div>
+      </section>
+      <section id="skills">
+        <div className="flex min-h-0 flex-col gap-y-3">
+          <BlurFade delay={1}>
+            <h2 className="text-xl font-bold">Skills</h2>
+          </BlurFade>
+          <div className="flex flex-wrap gap-1">
+            {DATA.skills.map((skill, id) => (
+              <BlurFade key={skill.name} delay={1.01}>
+                <Badge className="dark:text-invert">{skill.name}</Badge>
+              </BlurFade>
+            ))}
+          </div>
         </div>
       </section>
     </main>

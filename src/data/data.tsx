@@ -1,5 +1,8 @@
 import { HomeIcon, LinkedInLogoIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
-import { FaFacebook } from 'react-icons/fa';
+import { FaFacebook, FaReact } from 'react-icons/fa';
+import { DiJavascript } from 'react-icons/di';
+import { BiLogoTypescript } from 'react-icons/bi';
+import { start } from 'repl';
 
 export const DATA = {
   name: 'Dharyl Carry S. Almora',
@@ -26,19 +29,69 @@ export const DATA = {
       color: '#3b5998',
     },
   ],
-  skill: [
-    'JavaScript',
-    'TypeScript',
-    'React',
-    'Next.js',
-    'Node.js',
-    'Express',
-    'MongoDB',
-    'TailwindCSS',
-    'Bootstrap',
-    'HTML',
-    'CSS',
-    'Git',
+  // skills: [
+  //   'JavaScript',
+  //   'TypeScript',
+  //   'React',
+  //   'Next.js',
+  //   'Node.js',
+  //   'Express',
+  //   'MongoDB',
+  //   'TailwindCSS',
+  //   'Bootstrap',
+  //   'HTML',
+  //   'CSS',
+  //   'Git',
+  // ],
+  skills: [
+    {
+      name: 'JavaScript',
+      icon: DiJavascript,
+    },
+    {
+      name: 'TypeScript',
+      icon: BiLogoTypescript,
+    },
+    {
+      name: 'React',
+      icon: FaReact,
+    },
+    {
+      name: 'Next.js',
+      icon: FaReact,
+    },
+    {
+      name: 'Node.js',
+      icon: DiJavascript,
+    },
+    {
+      name: 'Express',
+      icon: DiJavascript,
+    },
+    {
+      name: 'MongoDB',
+      icon: DiJavascript,
+    },
+    {
+      name: 'TailwindCSS',
+      icon: DiJavascript,
+    },
+    {
+      name: 'Bootstrap',
+      icon: DiJavascript,
+    },
+    {
+      name: 'HTML',
+      icon: DiJavascript,
+    },
+    {
+      name: 'CSS',
+      icon: DiJavascript,
+    },
+    {
+      name: 'Git',
+      icon: DiJavascript,
+    },
   ],
   contact: {
     email: 'mdhar1487@gmail.com',
@@ -94,6 +147,41 @@ export const DATA = {
       start: '2005',
       end: '2008',
       logo: '/csu.png',
+    },
+  ],
+  works: [
+    {
+      company: 'Quijano & Virtudazo Law Office',
+      title: 'Secretary',
+      location: 'Dapa, Siargao Surigao del Norte',
+      start: 'May 2024',
+      end: 'Present',
+      description:
+        'Managing records, projects and calendars to make sure everything functions smoothly',
+      logo: '/csu.png',
+      href: '#',
+    },
+    {
+      company: 'Sumaylo Roofing',
+      title: 'Roofer or Sub Contractor | Rool Up Door Fabricator',
+      location: 'Surigao del Norte',
+      start: 'October 2015',
+      end: 'March 2023',
+      description:
+        'Supply and install roof and siding materials for residential, commercial and industrial projects',
+      logo: '/sumaylo.jpg',
+      href: 'https://www.facebook.com/profile.php?id=100077688507351',
+    },
+    {
+      company: 'Cacayan Roofing',
+      title: 'Roofer or Sub Contractor ',
+      location: 'Brgy. Luna, Surigao del Norte',
+      start: 'March 2011',
+      end: 'November 2009',
+      description:
+        'Supply and install roof and siding materials for residential, commercial and industrial projects',
+      logo: '/cacayan.jpg',
+      href: 'https://www.facebook.com/cacayanroofingspecialist',
     },
   ],
 };

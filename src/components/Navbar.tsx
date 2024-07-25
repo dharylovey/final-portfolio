@@ -2,11 +2,11 @@ import React from 'react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
 import { Dock, DockIcon } from './magicui/dock';
 import Link from 'next/link';
-import { HomeIcon, LinkedInLogoIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
-import { FaFacebook } from 'react-icons/fa';
 import { Separator } from './ui/separator';
 import { ModeToggle } from './mode-toggle';
 import { DATA } from '@/data/data';
+import { cn } from '@/lib/utils';
+import { buttonVariants } from './ui/button';
 
 export default function Navbar() {
   return (
@@ -18,13 +18,17 @@ export default function Navbar() {
       >
         {DATA.navbar.map((item: any) => (
           <DockIcon key={item.href}>
-            <Tooltip>
+            <Tooltip delayDuration={0}>
               <TooltipTrigger asChild>
-                <Link href={item.href} target={item.href === '/' ? '_self' : '_blank'}>
+                <Link
+                  href={item.href}
+                  target={item.href === '/' ? '_self' : '_blank'}
+                  className={cn(buttonVariants({ variant: 'ghost', size: 'icon' }), 'size-12')}
+                >
                   <item.icon className="size-4 h-6 w-6" color={item.color} />
                 </Link>
               </TooltipTrigger>
-              <TooltipContent>
+              <TooltipContent side="bottom">
                 <p>{item.label}</p>
               </TooltipContent>
             </Tooltip>
