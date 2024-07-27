@@ -6,7 +6,7 @@ import { MyCard } from '@/components/my-card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { DATA } from '@/data/data';
 import { Badge } from '@/components/ui/badge';
-import { IconCloudSkill } from '@/components/icon-cloud';
+import { Project } from '@/components/project';
 
 export default function Home() {
   return (
@@ -81,7 +81,6 @@ export default function Home() {
                 title={work.company}
                 subtitle={work.title}
                 href={work.href}
-                // badges={work.badges}
                 period={`${work.start} - ${work.end ?? 'Present'}`}
                 description={work.description}
               />
@@ -97,11 +96,50 @@ export default function Home() {
           <div className="flex flex-wrap gap-1">
             {DATA.skills.map((skill, id) => (
               <BlurFade key={skill.name} delay={1.01}>
-                <Badge className="dark:text-invert">{skill.name}</Badge>
+                <div>
+                  <Badge className="dark:text-invert h-6 gap-2">
+                    {skill.icon && <skill.icon />} {skill.name}
+                  </Badge>
+                </div>
               </BlurFade>
             ))}
           </div>
-          <IconCloudSkill />
+          {/* <IconCloudSkill /> */}
+        </div>
+      </section>
+      <section id="projects">
+        <div className="w-full space-y-4 py-12">
+          <BlurFade delay={1.1}>
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="">
+                <div className="text-xl font-bold">My Projects</div>
+                {/* <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Check out my latest work
+                </h2>
+                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  I&apos;ve worked on a variety of projects, from simple websites to complex web
+                  applications. Here are a few of my favorites.
+                </p> */}
+              </div>
+            </div>
+          </BlurFade>
+          <div className="mx-auto grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {DATA.projects.map((project) => (
+              <BlurFade key={project.title} delay={1.5}>
+                <Project
+                  href={project.href}
+                  key={project.title}
+                  title={project.title}
+                  description={project.description}
+                  dates={project.date}
+                  tags={project.tech}
+                  image={project.image}
+                  video={project.video}
+                  links={project.links}
+                />
+              </BlurFade>
+            ))}
+          </div>
         </div>
       </section>
     </main>
