@@ -23,7 +23,8 @@ export const DATA = {
   profile:
     'I am passionate and highly motivated career shifter with a strong desire to excel in the field of web development. With a solid foundation in creating dynamic and responsive web applications. Capable of independently handling projects and working collaboratively with the team members.',
   location: 'https://www.google.com/maps/place/siargao',
-  avatar: '/my_photo.webp',
+  avatar:
+    'https://res.cloudinary.com/dah8qhqok/image/upload/v1722095997/my_portfolio_asset/my_photo_ctgmjd.webp',
   navbar: [
     { href: '/', icon: HomeIcon, label: 'Home' },
     {
