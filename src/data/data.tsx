@@ -86,7 +86,7 @@ export const DATA = {
       degree: 'The Web Developer Bootcamp 2024',
       start: 'March 2024',
       end: 'July 2024',
-      logo: '/udemy.png',
+      logo: 'https://res.cloudinary.com/dah8qhqok/image/upload/v1722094922/my_portfolio_asset/udemy_ukdpci.png',
     },
     {
       school: 'Coursera',
@@ -94,7 +94,7 @@ export const DATA = {
       degree: 'Meta Frontend Developer Nanodegree',
       start: 'December 2023',
       end: 'March 2024',
-      logo: '/coursera.png',
+      logo: 'https://res.cloudinary.com/dah8qhqok/image/upload/v1722094922/my_portfolio_asset/coursera_galkya.png',
     },
     {
       school: 'KodeGo PH Bootcamp',
@@ -102,7 +102,7 @@ export const DATA = {
       degree: 'Full Stack Web Development',
       start: 'July 2023',
       end: 'December 2023',
-      logo: '/kodego.png',
+      logo: 'https://res.cloudinary.com/dah8qhqok/image/upload/v1722094924/my_portfolio_asset/kodego_bapdnj.png',
     },
     {
       school:
@@ -111,7 +111,7 @@ export const DATA = {
       degree: 'Bachelor of Science in Computer Science',
       start: '2005',
       end: '2008',
-      logo: '/csu.png',
+      logo: 'https://res.cloudinary.com/dah8qhqok/image/upload/v1722094923/my_portfolio_asset/csu_ancjuw.png',
     },
   ],
   works: [
@@ -123,7 +123,7 @@ export const DATA = {
       end: 'Present',
       description:
         'I am responsible for managing correspondence, scheduling appointments, maintaining files, and assisting with legal document preparation.',
-      logo: '/csu.png',
+      logo: 'https://res.cloudinary.com/dah8qhqok/image/upload/v1722094923/my_portfolio_asset/csu_ancjuw.png',
       href: '#',
     },
     {
@@ -134,7 +134,7 @@ export const DATA = {
       end: 'April 2024',
       description:
         'As a roving merchandiser, I improve product displays, keep shelves stocked, help customers, and follow company rules. I also research market trends, travel to different stores, and teach staff effective merchandising techniques.',
-      logo: '/megasoft.jpg',
+      logo: 'https://res.cloudinary.com/dah8qhqok/image/upload/v1722094924/my_portfolio_asset/megasoft_xun2vo.jpg',
       href: 'https://megasoft.com.ph/',
     },
     {
@@ -145,7 +145,7 @@ export const DATA = {
       end: 'April 2022',
       description:
         'As a Foodpanda rider, I collect and deliver orders on time, communicate with customers, handle payments, maintain equipment, follow safety protocols, manage orders via the app, and keep delivery records.',
-      logo: '/foodpanda.png',
+      logo: 'https://res.cloudinary.com/dah8qhqok/image/upload/v1722094924/my_portfolio_asset/foodpanda_u00z62.png',
       href: 'https://megasoft.com.ph/',
     },
     {
@@ -156,7 +156,7 @@ export const DATA = {
       end: 'September 2021',
       description:
         'Supply and install roof and siding materials for residential, commercial and industrial projects. Fabricate Roll Up Doors.',
-      logo: '/sumaylo.jpg',
+      logo: 'https://res.cloudinary.com/dah8qhqok/image/upload/v1722094923/my_portfolio_asset/sumaylo_awuzzj.jpg',
       href: 'https://www.facebook.com/profile.php?id=100077688507351',
     },
     {
@@ -167,7 +167,7 @@ export const DATA = {
       end: 'November 2009',
       description:
         'Supply and install roof and siding materials for residential, commercial and industrial projects',
-      logo: '/cacayan.jpg',
+      logo: 'https://res.cloudinary.com/dah8qhqok/image/upload/v1722094923/my_portfolio_asset/cacayan_isfbvo.jpg',
       href: 'https://www.facebook.com/cacayanroofingspecialist',
     },
   ],
@@ -198,7 +198,8 @@ export const DATA = {
         },
       ],
       image: '',
-      video: '/gadgetshop.mp4',
+      video:
+        'https://res.cloudinary.com/dah8qhqok/video/upload/v1722095534/my_portfolio_video_assets/gadgetshop_shq7zd.mp4',
     },
     {
       title: 'Megasoft Hygienic Products, Inc',
@@ -229,7 +230,8 @@ export const DATA = {
         },
       ],
       image: '',
-      video: '/megasoft.mp4',
+      video:
+        'https://res.cloudinary.com/dah8qhqok/video/upload/v1722095532/my_portfolio_video_assets/megasoft_hslw2q.mp4',
     },
     {
       title: 'UI/UX Landing Page',
@@ -250,7 +252,8 @@ export const DATA = {
         },
       ],
       image: '',
-      video: '/landingpageuiux.mp4',
+      video:
+        'https://res.cloudinary.com/dah8qhqok/video/upload/v1722095531/my_portfolio_video_assets/landingpageuiux_ge2aey.mp4',
     },
     {
       title: 'Blog',
@@ -271,7 +274,8 @@ export const DATA = {
         },
       ],
       image: '',
-      video: '/dharylblog.mp4',
+      video:
+        'https://res.cloudinary.com/dah8qhqok/video/upload/v1722095530/my_portfolio_video_assets/dharylblog_tp3rqb.mp4',
     },
     {
       title: 'Tik Tak Toe',
@@ -292,7 +296,8 @@ export const DATA = {
         },
       ],
       image: '',
-      video: '/tiktaktoe.mp4',
+      video:
+        'https://res.cloudinary.com/dah8qhqok/video/upload/v1722095529/my_portfolio_video_assets/tiktaktoe_pulcqz.mp4',
     },
     {
       title: 'Siargao Gateway',
@@ -318,7 +323,8 @@ export const DATA = {
           icon: <icons.globe />,
         },
       ],
-      image: '/siargao-gateway.png',
+      image:
+        'https://res.cloudinary.com/dah8qhqok/image/upload/v1722094923/my_portfolio_asset/siargao-gateway_qsabzk.png',
       video: '',
     },
     {
@@ -335,7 +341,8 @@ export const DATA = {
         },
       ],
       image: '',
-      video: '/sumayloroofing.mp4',
+      video:
+        'https://res.cloudinary.com/dah8qhqok/video/upload/v1722095534/my_portfolio_video_assets/sumayloroofing_yblvrd.mp4',
     },
   ],
 };
