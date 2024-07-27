@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import Navbar from '@/components/Navbar';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { ThemeProvider } from '@/components/theme-provider';
+import { Footer } from '@/components/footer';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -33,6 +34,7 @@ export default function RootLayout({
           <TooltipProvider delayDuration={0}>
             <Navbar />
             {children}
+            <Footer />
           </TooltipProvider>
         </ThemeProvider>
       </body>
