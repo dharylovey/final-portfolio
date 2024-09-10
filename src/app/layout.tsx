@@ -24,6 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body
         className={cn(
           'mx-auto min-h-screen max-w-screen-lg bg-background px-4 font-sans antialiased',
