@@ -1,0 +1,96 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int         @id @default(autoincrement())
+  name        String
+  description String
+  initials    String
+  profile     String
+  location    String
+  avatar      String
+  skills      Skill[]
+  contact     Contact[]
+  education   Education[]
+  work        Work[]
+}
+
+model Skill {
+  id      Int    @id @default(autoincrement())
+  name    String
+  icon    String
+  skillId User   @relation(fields: [userId], references: [id])
+  userId  Int
+}
+
+model Contact {
+  id          Int           @id @default(autoincrement())
+  email       String
+  phone       String
+  contactId   User          @relation(fields: [userId], references: [id])
+  userId      Int
+  socialMedia SocialMedia[]
+  Linkedin    Linkedin?
+  Github      Github?
+  Facebook    Facebook?
+}
+
+model SocialMedia {
+  id          Int     @id @default(autoincrement())
+  Linkedin    String?
+  Github      String?
+  Facebook    String?
+  socialMedia Contact @relation(fields: [contactId], references: [id])
+  contactId   Int
+}
+
+model Linkedin {
+  id        Int     @id @default(autoincrement())
+  name      String
+  url       String?
+  icon      String
+  linkedin  Contact @relation(fields: [contactId], references: [id])
+  contactId Int     @unique
+}
+
+model Github {
+  id        Int     @id @default(autoincrement())
+  name      String
+  url       String?
+  icon      String
+  github    Contact @relation(fields: [contactId], references: [id])
+  contactId Int     @unique
+}
+
+model Facebook {
+  id        Int     @id @default(autoincrement())
+  name      String
+  url       String?
+  icon      String
+  facebook  Contact @relation(fields: [contactId], references: [id])
+  contactId Int     @unique
+}
+
+model Education {
+  id          Int    @id @default(autoincrement())
+  school      String
+  href        String
+  start       String
+  end         String
+  logo        String
+  educationId User   @relation(fields: [userId], references: [id])
+  userId      Int
+}
+
+model Work {
+  id Int @id @default(autoincrement())
+
+  workId User @relation(fields: [userId], references: [id])
+  userId Int
+}
