@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Footer } from '@/components/footer';
+import { Toaster } from '@/components/ui/sonner';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -46,6 +47,18 @@ export default function RootLayout({
           <TooltipProvider delayDuration={0}>
             <Navbar />
             {children}
+            <Toaster
+              duration={5000}
+              position="top-right"
+              toastOptions={{
+                classNames: {
+                  error: 'bg-red-400',
+                  success: 'text-green-400',
+                  warning: 'text-yellow-400',
+                  info: 'bg-blue-400',
+                },
+              }}
+            />
             <Footer />
           </TooltipProvider>
         </ThemeProvider>

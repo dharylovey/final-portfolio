@@ -37,17 +37,22 @@ export default function ContactForm() {
   } = form;
 
   async function onSubmit(values: z.infer<typeof contactFormSchema>) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    const response = contactFormSchema.safeParse(values);
+
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
     try {
-      console.log(values);
-      toast(
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-        </pre>,
-      );
+      if (!response.success) {
+        toast.error('Failed to submit the message. Please try again.');
+        return;
+      }
+
+      toast.success('Message sent successfully! Details:');
     } catch (error) {
-      console.error('Form submission error', error);
-      toast.error('Failed to submit the form. Please try again.');
+      console.error('Error submitting form:', error);
+      toast.error('Failed to submit the message. Please try again.');
+    } finally {
+      form.reset();
     }
   }
 
