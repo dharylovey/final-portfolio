@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Project } from '@/components/project';
 import { Suspense } from 'react';
 import Loading from './loading';
+import ContactForm from '@/components/ContactForm';
 
 export default function Home() {
   return (
@@ -145,6 +146,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <ContactForm />
       </main>
     </Suspense>
   );
