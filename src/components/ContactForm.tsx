@@ -52,7 +52,7 @@ export default function ContactForm() {
   }
 
   return (
-    <Card className="mx-auto w-[600px] max-w-3xl">
+    <Card className="mx-auto w-full md:w-[600px]">
       <CardHeader className="space-y-3 text-center">
         <CardTitle>Get in touch</CardTitle>
         <CardDescription className="text-pretty font-sans text-sm text-muted-foreground md:text-lg">
@@ -62,10 +62,7 @@ export default function ContactForm() {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="mx-auto w-[600px] max-w-3xl space-y-2 py-10"
-          >
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 py-10">
             <div className="grid grid-cols-12 gap-4">
               <div className="col-span-6">
                 <FormField
