@@ -47,7 +47,7 @@ export default function ContactForm() {
         return;
       }
 
-      toast.success('Message sent successfully! Details:');
+      toast.success('Message sent successfully!');
     } catch (error) {
       console.error('Error submitting form:', error);
       toast.error('Failed to submit the message. Please try again.');
