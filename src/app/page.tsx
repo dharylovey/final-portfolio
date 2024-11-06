@@ -14,7 +14,7 @@ import ContactForm from '@/components/ContactForm';
 export default function Home() {
   return (
     <Suspense fallback={<Loading />}>
-      <main className="mx-auto flex flex-col justify-center space-y-8 py-36">
+      <main className="mx-auto flex flex-col justify-center space-y-8 pb-10 pt-36">
         <Particle />
         <section id="hero">
           <div className="mx-auto w-full max-w-screen-lg space-y-8">

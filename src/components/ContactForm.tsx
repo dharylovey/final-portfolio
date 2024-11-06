@@ -23,6 +23,11 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import React, { useRef, useState } from 'react';
 import { handleCaptchaSubmission } from '@/hooks/useCaptcha';
 import { sendMail } from '@/action/contactMe';
+import { CardFooter } from './card';
+import Link from 'next/link';
+import { PiMessengerLogo } from 'react-icons/pi';
+import { LuGithub } from 'react-icons/lu';
+import { CgMail } from 'react-icons/cg';
 
 export default function ContactForm() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -184,6 +189,15 @@ export default function ContactForm() {
                 </FormItem>
               )}
             />
+            <div className="w-full">
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                ref={recaptchaRef}
+                onChange={handleChange}
+                onExpired={handleExpired}
+                style={{ display: 'flex', width: '100%' }}
+              />
+            </div>
 
             {/* todo button */}
             <ContactSubmitBtn
@@ -200,18 +214,25 @@ export default function ContactForm() {
                 'Submit'
               )}
             </ContactSubmitBtn>
-            <div className="w-full">
-              <ReCAPTCHA
-                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-                ref={recaptchaRef}
-                onChange={handleChange}
-                onExpired={handleExpired}
-                style={{ display: 'flex', width: '100%' }}
-              />
-            </div>
           </form>
         </Form>
       </CardContent>
+      <CardFooter className="flex flex-col items-center justify-center space-y-4">
+        <p className="md:text-md text-pretty text-center font-sans text-sm text-muted-foreground">
+          Or connect with me on social media
+        </p>
+        <div className="flex items-center justify-center space-x-4">
+          <Link href={'https://m.me/dharyl2'} target="_blank">
+            <PiMessengerLogo size={30} />
+          </Link>
+          <Link href={'https://github.com/dharylovey'} target="_blank">
+            <LuGithub size={30} />
+          </Link>
+          <Link href={'mailto:mdhar1487@gmail.com'}>
+            <CgMail size={30} />
+          </Link>
+        </div>
+      </CardFooter>
     </Card>
   );
 }
