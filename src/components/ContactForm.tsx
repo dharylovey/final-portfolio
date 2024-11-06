@@ -177,9 +177,9 @@ export default function ContactForm() {
                   <FormControl>
                     <Textarea
                       placeholder="Type your message..."
-                      className="resize-none"
                       {...field}
                       disabled={isSubmitting}
+                      className="h-44 resize-none"
                     />
                   </FormControl>
                   {/* <FormDescription>
