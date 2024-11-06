@@ -99,7 +99,7 @@ export default function ContactForm() {
                       <FormControl>
                         <Input placeholder="Juan" type="text" {...field} disabled={isSubmitting} />
                       </FormControl>
-                      <FormDescription>Provide your first name.</FormDescription>
+                      {/* <FormDescription>Provide your first name.</FormDescription> */}
                       <FormMessage />
                     </FormItem>
                   )}
@@ -121,7 +121,7 @@ export default function ContactForm() {
                           disabled={isSubmitting}
                         />
                       </FormControl>
-                      <FormDescription>Enter your family or surname.</FormDescription>
+                      {/* <FormDescription>Enter your family or surname.</FormDescription> */}
                       <FormMessage />
                     </FormItem>
                   )}
@@ -142,7 +142,7 @@ export default function ContactForm() {
                       disabled={isSubmitting}
                     />
                   </FormControl>
-                  <FormDescription>Enter a valid email address.</FormDescription>
+                  {/* <FormDescription>Enter a valid email address.</FormDescription> */}
                   <FormMessage />
                 </FormItem>
               )}
@@ -161,9 +161,9 @@ export default function ContactForm() {
                       disabled={isSubmitting}
                     />
                   </FormControl>
-                  <FormDescription>
+                  {/* <FormDescription>
                     Summarize your inquiry in a few words for quicker reference.
-                  </FormDescription>
+                  </FormDescription> */}
                   <FormMessage />
                 </FormItem>
               )}
@@ -182,9 +182,9 @@ export default function ContactForm() {
                       disabled={isSubmitting}
                     />
                   </FormControl>
-                  <FormDescription>
+                  {/* <FormDescription>
                     Write your message here, including any specific details or questions you have.
-                  </FormDescription>
+                  </FormDescription> */}
                   <FormMessage />
                 </FormItem>
               )}

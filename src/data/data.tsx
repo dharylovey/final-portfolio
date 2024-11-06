@@ -19,7 +19,7 @@ export const DATA = {
   name: 'Dharyl Carry S. Almora',
   initials: 'DA',
   description:
-    "As a junior full stack developer, I'm passionate about crafting seamless web applications, proficient in both front-end and back-end technologies.",
+    "As a full stack developer, I'm passionate about crafting seamless web applications, proficient in both front-end and back-end technologies.",
   profile:
     'I am passionate and highly motivated career shifter with a strong desire to excel in the field of web development. With a solid foundation in creating dynamic and responsive web applications. Capable of independently handling projects and working collaboratively with the team members.',
   location: 'https://www.google.com/maps/place/siargao',
