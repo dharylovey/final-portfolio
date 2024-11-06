@@ -19,8 +19,14 @@ import { contactFormSchema } from '@/zodSchema/contactFormSchema';
 import ContactSubmitBtn from './ContactSubmitBtn';
 import { Card, CardContent, CardHeader, CardDescription, CardTitle } from './ui/card';
 import Cliploader from 'react-spinners/ClipLoader';
+import ReCAPTCHA from 'react-google-recaptcha';
+import React, { useRef, useState } from 'react';
+import { handleCaptchaSubmission } from '@/hooks/useCaptcha';
 
 export default function ContactForm() {
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
+
   const form = useForm<z.infer<typeof contactFormSchema>>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -33,8 +39,19 @@ export default function ContactForm() {
   });
 
   const {
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = form;
+
+  const handleChange = async (token: string | null) => {
+    const isVerified = await handleCaptchaSubmission(token);
+    if (isVerified) {
+      setIsCaptchaVerified(true);
+    }
+  };
+
+  function handleExpired() {
+    setIsCaptchaVerified(false);
+  }
 
   async function onSubmit(values: z.infer<typeof contactFormSchema>) {
     const response = contactFormSchema.safeParse(values);
@@ -53,6 +70,8 @@ export default function ContactForm() {
       toast.error('Failed to submit the message. Please try again.');
     } finally {
       form.reset();
+      recaptchaRef.current?.reset();
+      setIsCaptchaVerified(false);
     }
   }
 
@@ -77,12 +96,7 @@ export default function ContactForm() {
                     <FormItem>
                       <FormLabel>First Name</FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder="Dharyl Carry"
-                          type="text"
-                          {...field}
-                          disabled={isSubmitting}
-                        />
+                        <Input placeholder="Juan" type="text" {...field} disabled={isSubmitting} />
                       </FormControl>
                       <FormDescription>Provide your first name.</FormDescription>
                       <FormMessage />
@@ -100,7 +114,7 @@ export default function ContactForm() {
                       <FormLabel>Last Name</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Almora"
+                          placeholder="Dela Cruz"
                           type="text"
                           {...field}
                           disabled={isSubmitting}
@@ -174,8 +188,21 @@ export default function ContactForm() {
                 </FormItem>
               )}
             />
+            <div className="w-full">
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                ref={recaptchaRef}
+                onChange={handleChange}
+                onExpired={handleExpired}
+                style={{ display: 'flex', width: '100%' }}
+              />
+            </div>
             {/* todo button */}
-            <ContactSubmitBtn isSubmitting={isSubmitting}>
+            <ContactSubmitBtn
+              isSubmitting={isSubmitting}
+              isCaptchaVerified={isCaptchaVerified}
+              isDirty={isDirty}
+            >
               {isSubmitting ? (
                 <div className="flex items-center gap-3">
                   <Cliploader size={20} color="text-primary" />
