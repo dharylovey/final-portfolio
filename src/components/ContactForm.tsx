@@ -22,6 +22,7 @@ import Cliploader from 'react-spinners/ClipLoader';
 import ReCAPTCHA from 'react-google-recaptcha';
 import React, { useRef, useState } from 'react';
 import { handleCaptchaSubmission } from '@/hooks/useCaptcha';
+import { sendMail } from '@/action/contactMe';
 
 export default function ContactForm() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -56,18 +57,13 @@ export default function ContactForm() {
   async function onSubmit(values: z.infer<typeof contactFormSchema>) {
     const response = contactFormSchema.safeParse(values);
 
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-
+    if (!response.success) return toast.error('Failed to submit the message. Please try again.');
+    const data = await sendMail(response.data);
     try {
-      if (!response.success) {
-        toast.error('Failed to submit the message. Please try again.');
-        return;
-      }
-
-      toast.success('Message sent successfully!');
+      toast.success(data.message);
     } catch (error) {
       console.error('Error submitting form:', error);
-      toast.error('Failed to submit the message. Please try again.');
+      toast.error(data.error);
     } finally {
       form.reset();
       recaptchaRef.current?.reset();
@@ -188,15 +184,7 @@ export default function ContactForm() {
                 </FormItem>
               )}
             />
-            <div className="w-full">
-              <ReCAPTCHA
-                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-                ref={recaptchaRef}
-                onChange={handleChange}
-                onExpired={handleExpired}
-                style={{ display: 'flex', width: '100%' }}
-              />
-            </div>
+
             {/* todo button */}
             <ContactSubmitBtn
               isSubmitting={isSubmitting}
@@ -212,6 +200,15 @@ export default function ContactForm() {
                 'Submit'
               )}
             </ContactSubmitBtn>
+            <div className="w-full">
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                ref={recaptchaRef}
+                onChange={handleChange}
+                onExpired={handleExpired}
+                style={{ display: 'flex', width: '100%' }}
+              />
+            </div>
           </form>
         </Form>
       </CardContent>
