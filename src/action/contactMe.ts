@@ -13,7 +13,7 @@ export async function sendMail(data: z.infer<typeof contactFormSchema>) {
   const { email, subject, message, firstName, lastName } = validatedFields.data;
 
   try {
-    await sendEmailtoAdmin(email, subject, message);
+    await sendEmailtoAdmin(email, subject, message, firstName, lastName);
 
     await sendEmailtoUser(email, firstName, lastName);
 
