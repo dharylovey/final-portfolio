@@ -8,8 +8,8 @@ import { DATA } from '@/data/data';
 import { Badge } from '@/components/ui/badge';
 import { Project } from '@/components/project';
 import { Suspense } from 'react';
-import Loading from './loading';
 import ContactForm from '@/components/ContactForm';
+import Loading from '@/app/(home)/loading';
 
 export default function Home() {
   return (
