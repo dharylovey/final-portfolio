@@ -3,94 +3,102 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model User {
   id          Int         @id @default(autoincrement())
   name        String
-  description String
   initials    String
+  description String
   profile     String
   location    String
   avatar      String
   skills      Skill[]
-  contact     Contact[]
+  contact     Contact     @relation(fields: [contactId], references: [id])
+  contactId   Int
   education   Education[]
-  work        Work[]
+  works       Work[]
+  projects    Project[]
 }
 
 model Skill {
-  id      Int    @id @default(autoincrement())
-  name    String
-  icon    String
-  skillId User   @relation(fields: [userId], references: [id])
-  userId  Int
+  id     Int    @id @default(autoincrement())
+  name   String
+  icon   String // Assuming you're storing icon names as strings
+  userId Int
+  user   User   @relation(fields: [userId], references: [id])
 }
 
 model Contact {
   id          Int           @id @default(autoincrement())
   email       String
   phone       String
-  contactId   User          @relation(fields: [userId], references: [id])
-  userId      Int
   socialMedia SocialMedia[]
-  Linkedin    Linkedin?
-  Github      Github?
-  Facebook    Facebook?
+  User        User[]
 }
 
 model SocialMedia {
-  id          Int     @id @default(autoincrement())
-  Linkedin    String?
-  Github      String?
-  Facebook    String?
-  socialMedia Contact @relation(fields: [contactId], references: [id])
-  contactId   Int
-}
-
-model Linkedin {
   id        Int     @id @default(autoincrement())
   name      String
-  url       String?
-  icon      String
-  linkedin  Contact @relation(fields: [contactId], references: [id])
-  contactId Int     @unique
-}
-
-model Github {
-  id        Int     @id @default(autoincrement())
-  name      String
-  url       String?
-  icon      String
-  github    Contact @relation(fields: [contactId], references: [id])
-  contactId Int     @unique
-}
-
-model Facebook {
-  id        Int     @id @default(autoincrement())
-  name      String
-  url       String?
-  icon      String
-  facebook  Contact @relation(fields: [contactId], references: [id])
-  contactId Int     @unique
+  url       String
+  icon      String // Assuming you're storing icon names as strings
+  contactId Int
+  contact   Contact @relation(fields: [contactId], references: [id])
 }
 
 model Education {
-  id          Int    @id @default(autoincrement())
-  school      String
-  href        String
-  start       String
-  end         String
-  logo        String
-  educationId User   @relation(fields: [userId], references: [id])
-  userId      Int
+  id     Int    @id @default(autoincrement())
+  school String
+  href   String
+  degree String
+  start  String
+  end    String
+  logo   String
+  userId Int
+  user   User   @relation(fields: [userId], references: [id])
 }
 
 model Work {
-  id Int @id @default(autoincrement())
+  id          Int    @id @default(autoincrement())
+  company     String
+  title       String
+  location    String
+  start       String
+  end         String
+  description String
+  logo        String
+  href        String
+  userId      Int
+  user        User   @relation(fields: [userId], references: [id])
+}
 
-  workId User @relation(fields: [userId], references: [id])
-  userId Int
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String
+  href        String
+  date        String
+  description String
+  tech        String[]
+  links       Link[]
+  image       String?
+  video       String?
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+}
+
+model Link {
+  id        Int     @id @default(autoincrement())
+  type      String
+  href      String
+  icon      String // Assuming you're storing icon names as strings
+  projectId Int
+  project   Project @relation(fields: [projectId], references: [id])
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
 }
