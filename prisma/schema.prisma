@@ -1,0 +1,104 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int         @id @default(autoincrement())
+  name        String
+  initials    String
+  description String
+  profile     String
+  location    String
+  avatar      String
+  skills      Skill[]
+  contact     Contact     @relation(fields: [contactId], references: [id])
+  contactId   Int
+  education   Education[]
+  works       Work[]
+  projects    Project[]
+}
+
+model Skill {
+  id     Int    @id @default(autoincrement())
+  name   String
+  icon   String // Assuming you're storing icon names as strings
+  userId Int
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model Contact {
+  id          Int           @id @default(autoincrement())
+  email       String
+  phone       String
+  socialMedia SocialMedia[]
+  User        User[]
+}
+
+model SocialMedia {
+  id        Int     @id @default(autoincrement())
+  name      String
+  url       String
+  icon      String // Assuming you're storing icon names as strings
+  contactId Int
+  contact   Contact @relation(fields: [contactId], references: [id])
+}
+
+model Education {
+  id     Int    @id @default(autoincrement())
+  school String
+  href   String
+  degree String
+  start  String
+  end    String
+  logo   String
+  userId Int
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model Work {
+  id          Int    @id @default(autoincrement())
+  company     String
+  title       String
+  location    String
+  start       String
+  end         String
+  description String
+  logo        String
+  href        String
+  userId      Int
+  user        User   @relation(fields: [userId], references: [id])
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String
+  href        String
+  date        String
+  description String
+  tech        String[]
+  links       Link[]
+  image       String?
+  video       String?
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+}
+
+model Link {
+  id        Int     @id @default(autoincrement())
+  type      String
+  href      String
+  icon      String // Assuming you're storing icon names as strings
+  projectId Int
+  project   Project @relation(fields: [projectId], references: [id])
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+}
