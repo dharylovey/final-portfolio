@@ -12,13 +12,35 @@ import {
 import { Input } from '@/components/ui/input';
 import React from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema } from '@/zodSchema/loginSchema';
+import { LoginSchema, loginSchema } from '@/zodSchema/loginSchema';
 import { useForm } from 'react-hook-form';
+import LoginBtn from './_loginBtn';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 export default function LoginForm() {
+  const router = useRouter();
   const form = useForm({
     resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
   });
+
+  const {
+    reset,
+    formState: { isSubmitting },
+  } = form;
+
+  const onSubmit = async (data: LoginSchema) => {
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+    console.log(data);
+    toast.success('Login Success');
+    reset();
+    router.push('/dashboard');
+  };
+
   return (
     <Card className="mx-auto w-full space-y-3 md:w-[500px]">
       <CardHeader className="space-y-3 text-center">
@@ -29,7 +51,7 @@ export default function LoginForm() {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
             <FormField
               control={form.control}
               name="email"
@@ -37,7 +59,12 @@ export default function LoginForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="dev@mail.com" type="email" {...field} />
+                    <Input
+                      placeholder="dev@mail.com"
+                      type="email"
+                      {...field}
+                      disabled={isSubmitting}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -50,12 +77,18 @@ export default function LoginForm() {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input placeholder="*******" type="password" {...field} />
+                    <Input
+                      placeholder="*******"
+                      type="password"
+                      {...field}
+                      disabled={isSubmitting}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+            <LoginBtn isSubmitting={isSubmitting} />
           </form>
         </Form>
       </CardContent>

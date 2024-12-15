@@ -36,7 +36,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body
         className={cn(
-          'mx-auto min-h-screen max-w-screen-lg bg-background px-4 font-sans antialiased',
+          'mx-auto min-h-screen w-full bg-background px-4 font-sans antialiased',
           fontSans.variable,
         )}
       >

@@ -12,25 +12,27 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <ThemeProvider attribute="class" defaultTheme="dark">
-        <TooltipProvider delayDuration={0}>
-          <Navbar />
-          {children}
-          <Toaster
-            duration={5000}
-            position="top-right"
-            toastOptions={{
-              classNames: {
-                error: 'bg-red-400',
-                success: 'text-green-400',
-                warning: 'text-yellow-400',
-                info: 'bg-blue-400',
-              },
-            }}
-          />
-          <Footer />
-        </TooltipProvider>
-      </ThemeProvider>
+      <div className="mx-auto min-h-screen max-w-screen-lg bg-background px-4 font-sans antialiased">
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <TooltipProvider delayDuration={0}>
+            <Navbar />
+            {children}
+            <Toaster
+              duration={5000}
+              position="top-right"
+              toastOptions={{
+                classNames: {
+                  error: 'bg-red-400',
+                  success: 'text-green-400',
+                  warning: 'text-yellow-400',
+                  info: 'bg-blue-400',
+                },
+              }}
+            />
+            <Footer />
+          </TooltipProvider>
+        </ThemeProvider>
+      </div>
     </>
   );
 }
