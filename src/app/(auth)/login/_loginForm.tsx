@@ -46,7 +46,7 @@ export default function LoginForm() {
       <CardHeader className="space-y-3 text-center">
         <CardTitle>Welcom Back 👋</CardTitle>
         <CardDescription className="text-pretty font-sans text-sm text-muted-foreground md:text-lg">
-          Please enter your login credentials to access your account.
+          Please enter your login credentials to access your admin account.
         </CardDescription>
       </CardHeader>
       <CardContent>

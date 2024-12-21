@@ -1,4 +1,6 @@
-import { Calendar, ChevronUp, Home, Inbox, Search, Settings, User2 } from 'lucide-react';
+import { CalendarIcon, HomeIcon, EnvelopeOpenIcon, GearIcon } from '@radix-ui/react-icons';
+import { FaRegUser } from 'react-icons/fa';
+import { GrBlog } from 'react-icons/gr';
 
 import {
   Sidebar,
@@ -12,39 +14,39 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import Link from 'next/link';
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from '@radix-ui/react-dropdown-menu';
+import { ModeToggle } from './mode-toggle';
+import { ModeToggleDropdown } from './mode-toggle-dropdown';
 
-// Menu items.
 const items = [
+  {
+    title: 'Profile',
+    url: '/dashboard/profile',
+    icon: FaRegUser,
+  },
+  {
+    title: 'Blog',
+    url: '/dashboard/blog',
+    icon: GrBlog,
+  },
   {
     title: 'Home',
     url: '/dashboard',
-    icon: Home,
+    icon: HomeIcon,
   },
   {
     title: 'Inbox',
-    url: '/inbox',
-    icon: Inbox,
+    url: '/dashboard/inbox',
+    icon: EnvelopeOpenIcon,
   },
   {
     title: 'Calendar',
-    url: '/calendar',
-    icon: Calendar,
-  },
-  {
-    title: 'Search',
-    url: '/search',
-    icon: Search,
+    url: '/dashboard/calendar',
+    icon: CalendarIcon,
   },
   {
     title: 'Settings',
-    url: '/settings',
-    icon: Settings,
+    url: '/dashboard/settings',
+    icon: GearIcon,
   },
 ];
 
@@ -53,7 +55,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>Admin Dashboard</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
@@ -74,10 +76,9 @@ export function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <Link href="#">
-                User
-                <span>User2</span>
-              </Link>
+              <div className="flex items-center justify-between">
+                <Link href="#">User</Link>
+              </div>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

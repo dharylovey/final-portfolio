@@ -1,10 +1,10 @@
 import Headings from '@/components/Headings';
 import React from 'react';
 
-export default function page() {
+export default function CalendarPage() {
   return (
     <div>
-      <Headings>Home</Headings>
+      <Headings>Calendar</Headings>
     </div>
   );
 }

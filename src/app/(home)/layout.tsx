@@ -1,4 +1,3 @@
-import { Footer } from '@/components/footer';
 import Navbar from '@/components/Navbar';
 import { Toaster } from '@/components/ui/sonner';
 import '../globals.css';
