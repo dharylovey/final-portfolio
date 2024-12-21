@@ -14,10 +14,15 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import Link from 'next/link';
-import { ModeToggle } from './mode-toggle';
-import { ModeToggleDropdown } from './mode-toggle-dropdown';
+import { LogoutButton } from '@/app/(protected)/dashboard/_component/logout';
+import { AvatarUser } from '@/app/(protected)/dashboard/_component/avatar';
 
 const items = [
+  {
+    title: 'Dashboard',
+    url: '/dashboard',
+    icon: HomeIcon,
+  },
   {
     title: 'Profile',
     url: '/dashboard/profile',
@@ -28,11 +33,7 @@ const items = [
     url: '/dashboard/blog',
     icon: GrBlog,
   },
-  {
-    title: 'Home',
-    url: '/dashboard',
-    icon: HomeIcon,
-  },
+
   {
     title: 'Inbox',
     url: '/dashboard/inbox',
@@ -75,9 +76,12 @@ export function AppSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <div className="flex items-center justify-between">
-                <Link href="#">User</Link>
+            <SidebarMenuButton asChild className="h-fit">
+              <div className="flex items-center gap-6">
+                <Link href="#">
+                  <AvatarUser />
+                </Link>
+                <p>Admin</p>
               </div>
             </SidebarMenuButton>
           </SidebarMenuItem>

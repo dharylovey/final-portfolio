@@ -6,7 +6,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main className="min-h-screen w-full pt-6 md:px-10">
+      <main className="min-h-screen w-full pt-6">
         <div className="flex justify-between">
           <SidebarTrigger />
           <ModeToggle />
