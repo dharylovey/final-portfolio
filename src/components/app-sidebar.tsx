@@ -1,7 +1,8 @@
-import { CalendarIcon, HomeIcon, EnvelopeOpenIcon, GearIcon } from '@radix-ui/react-icons';
+import { CalendarIcon, EnvelopeOpenIcon, GearIcon, HomeIcon } from '@radix-ui/react-icons';
 import { FaRegUser } from 'react-icons/fa';
 import { GrBlog } from 'react-icons/gr';
 
+import { AvatarUser } from '@/app/(protected)/dashboard/_component/avatar';
 import {
   Sidebar,
   SidebarContent,
@@ -14,8 +15,6 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import Link from 'next/link';
-import { LogoutButton } from '@/app/(protected)/dashboard/_component/logout';
-import { AvatarUser } from '@/app/(protected)/dashboard/_component/avatar';
 
 const items = [
   {
@@ -53,7 +52,7 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Admin Dashboard</SidebarGroupLabel>
@@ -76,7 +75,7 @@ export function AppSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild className="h-fit">
+            <SidebarMenuButton asChild className="h-fit" size={'sm'}>
               <div className="flex items-center gap-6">
                 <Link href="#">
                   <AvatarUser />

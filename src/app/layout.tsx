@@ -1,13 +1,13 @@
-import React from 'react';
-import './globals.css';
-import { Inter as FontSans } from 'next/font/google';
-import { cn } from '@/lib/utils';
-import type { Metadata } from 'next';
 import { Footer } from '@/components/footer';
-import Navbar from '@/components/Navbar';
+import { cn } from '@/lib/utils';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
+import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
+import { Inter as FontSans } from 'next/font/google';
+import React from 'react';
 import { Toaster } from 'sonner';
+import './globals.css';
+import NextTopLoader from 'nextjs-toploader';
 
 export const metadata: Metadata = {
   title: 'Dharyl Almora Portfolio',
@@ -42,6 +42,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
           <TooltipProvider delayDuration={0}>
+            <NextTopLoader />
             {children}
             <Toaster
               duration={5000}

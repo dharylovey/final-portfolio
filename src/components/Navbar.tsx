@@ -3,7 +3,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/t
 import { Dock, DockIcon } from './magicui/dock';
 import Link from 'next/link';
 import { Separator } from './ui/separator';
-import { ModeToggle } from './mode-toggle';
+import { ModeToggle } from './theme/mode-toggle';
 import { DATA } from '@/data/data';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from './ui/button';
